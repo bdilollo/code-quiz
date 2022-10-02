@@ -1,10 +1,15 @@
 * {
     box-sizing: border-box;
 }
-
+:root {
+    --background: #ffebcd;
+}
+body{
+    background-color: var(--background);
+}
 header {
-    background-color: darkolivegreen;
-    color: white;
+    background-color: #556b2f;
+    color: var(--background);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,8 +20,8 @@ h1 {
     font-family: monospace;
 }
 button {
-    background-color: rgb(147, 172, 147);
-    color: white;
+    background-color: #93ac93;
+    color: var(--background);
     font-size: 2rem;
     padding: 5px;
     padding-left: 10px;
@@ -24,4 +29,16 @@ button {
     position: absolute;
     top: 142px;
     border-radius: 15px;
+    border-color: var(--background);
+    border-style: solid;
+}
+
+.card {
+    margin-top: 5%;
+    border: solid 1px;
+    float: left;
+    width: 45%;
+    margin-left: 25px;
+    margin-right: 25px;
+    border-radius: 10px;
 }
