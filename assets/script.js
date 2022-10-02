@@ -34,5 +34,14 @@ function trackHighScores() {
 }
 
 function codeQuiz() {
-   
+    // use .textContent or .innerHTML to display question and answers
+    // answers need to be either buttons or multiple choice input fields(?) that can be clicked on
+    // make sure correct and incorrect responses are able to be logged separately (prevent event bubbling? Input field?)
+    // when answer is given, move on to next question
+    // when all questions have been answered, stop timer and display score
+    // determine if score qualifies for high score list (iterate through high score list?) and place it appropriately if it does
+    // display high score list w/ updated score if relevant
+    // store high scores in local storage
+    // reenable button to restart game
+
 }
