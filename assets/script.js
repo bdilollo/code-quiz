@@ -19,6 +19,7 @@ function startTimer(event) {
             countdown = 30;
             // need to set up something that logs current score when timer hits 0--here or separate function?
             // think maybe create separate function to log score and call both if timer hits 0 or if all quesitons answered
+            renderScore();
         }
     } ,1000);
 
@@ -72,6 +73,162 @@ function question1() {
 
 
 }
+function question2() {
+    // use .textContent or .innerHTML to display question and answers
+    questionEl.textContent = "Which of the following is an example of a non-semantic HTML tag?";
+    var list1 = document.createElement("li");
+    // list1.textContent = "this is the first answer";
+    answerEl.appendChild(list1);
+    var answer1 = document.createElement("button");
+    answer1.textContent = "<main>";
+    // add button id for styling?
+    list1.appendChild(answer1);
+    answer1.addEventListener("click", checkAnswer);
+
+    var list2 = document.createElement("li");
+    answerEl.appendChild(list2);
+    var answer2 = document.createElement("button");
+    answer2.textContent = "<header>";
+    // add button id for styling?
+    list2.appendChild(answer2);
+    answer2.addEventListener("click", checkAnswer);
+
+    var list3 = document.createElement("li");
+    answerEl.appendChild(list3);
+    var answer3 = document.createElement("button");
+    answer3.textContent = "<aside>";
+    // add button id for styling?
+    list3.appendChild(answer3);
+    answer3.addEventListener("click", checkAnswer);
+
+    var list4 = document.createElement("li");
+    answerEl.appendChild(list4);
+    var answer4 = document.createElement("button");
+    answer4.textContent = "<div>";
+    answer4.setAttribute("id","correct");
+    // add button id for styling?
+    list4.appendChild(answer4);
+    answer4.addEventListener("click", checkAnswer);
+
+
+}
+function question3() {
+    // use .textContent or .innerHTML to display question and answers
+    questionEl.innerHTML = "Which of the following CSS selectors would apply to an HTML element with a <strong>class</strong> of 'card'?";
+    var list1 = document.createElement("li");
+    // list1.textContent = "this is the first answer";
+    answerEl.appendChild(list1);
+    var answer1 = document.createElement("button");
+    answer1.textContent = "card {";
+    // add button id for styling?
+    list1.appendChild(answer1);
+    answer1.addEventListener("click", checkAnswer);
+
+    var list2 = document.createElement("li");
+    answerEl.appendChild(list2);
+    var answer2 = document.createElement("button");
+    answer2.textContent = "#card {";
+    // add button id for styling?
+    list2.appendChild(answer2);
+    answer2.addEventListener("click", checkAnswer);
+
+    var list3 = document.createElement("li");
+    answerEl.appendChild(list3);
+    var answer3 = document.createElement("button");
+    answer3.textContent = ".card {";
+    answer3.setAttribute("id", "correct");
+    // add button id for styling?
+    list3.appendChild(answer3);
+    answer3.addEventListener("click", checkAnswer);
+
+    var list4 = document.createElement("li");
+    answerEl.appendChild(list4);
+    var answer4 = document.createElement("button");
+    answer4.textContent = "*card {";
+    // add button id for styling?
+    list4.appendChild(answer4);
+    answer4.addEventListener("click", checkAnswer);
+
+
+}
+function question4() {
+    // use .textContent or .innerHTML to display question and answers
+    questionEl.textContent = "_______ is a valid type of value in JavaScript.";
+    var list1 = document.createElement("li");
+    // list1.textContent = "this is the first answer";
+    answerEl.appendChild(list1);
+    var answer1 = document.createElement("button");
+    answer1.textContent = "boolean";
+    // add button id for styling?
+    list1.appendChild(answer1);
+    answer1.addEventListener("click", checkAnswer);
+
+    var list2 = document.createElement("li");
+    answerEl.appendChild(list2);
+    var answer2 = document.createElement("button");
+    answer2.textContent = "string";
+    // add button id for styling?
+    list2.appendChild(answer2);
+    answer2.addEventListener("click", checkAnswer);
+
+    var list3 = document.createElement("li");
+    answerEl.appendChild(list3);
+    var answer3 = document.createElement("button");
+    answer3.textContent = "number";
+    // add button id for styling?
+    list3.appendChild(answer3);
+    answer3.addEventListener("click", checkAnswer);
+
+    var list4 = document.createElement("li");
+    answerEl.appendChild(list4);
+    var answer4 = document.createElement("button");
+    answer4.textContent = "all of the above";
+    answer4.setAttribute("id", "correct");
+    // add button id for styling?
+    list4.appendChild(answer4);
+    answer4.addEventListener("click", checkAnswer);
+
+
+}
+function question5() {
+    // use .textContent or .innerHTML to display question and answers
+    questionEl.textContent = "When using JavaScript, what does the expression 'i++' represent?";
+    var list1 = document.createElement("li");
+    // list1.textContent = "this is the first answer";
+    answerEl.appendChild(list1);
+    var answer1 = document.createElement("button");
+    answer1.textContent = "i=i+1";
+    answer1.setAttribute("id", "correct");
+    // add button id for styling?
+    list1.appendChild(answer1);
+    answer1.addEventListener("click", checkAnswer);
+
+    var list2 = document.createElement("li");
+    answerEl.appendChild(list2);
+    var answer2 = document.createElement("button");
+    answer2.textContent = "i=i+i";
+    // add button id for styling?
+    list2.appendChild(answer2);
+    answer2.addEventListener("click", checkAnswer);
+
+    var list3 = document.createElement("li");
+    answerEl.appendChild(list3);
+    var answer3 = document.createElement("button");
+    answer3.textContent = "i=i+2";
+    // add button id for styling?
+    list3.appendChild(answer3);
+    answer3.addEventListener("click", checkAnswer);
+
+    var list4 = document.createElement("li");
+    answerEl.appendChild(list4);
+    var answer4 = document.createElement("button");
+    answer4.textContent = "i=|i|";
+    // add button id for styling?
+    list4.appendChild(answer4);
+    answer4.addEventListener("click", checkAnswer);
+
+
+}
 var rightAnswers = 0;
 var wrongAnswers = 0;
 function checkAnswer(event) {
@@ -83,9 +240,36 @@ function checkAnswer(event) {
         wrongAnswers++;
         countdown = countdown-5;
     }
-    console.log(rightAnswers);
-    console.log(wrongAnswers);
+   removeChildren();
+   nextQuestion();
 }
+function removeChildren() {
+    while (answerEl.firstChild) {
+        answerEl.removeChild(answerEl.firstChild);
+    }
+}
+
+function nextQuestion() {
+    var index = (rightAnswers + wrongAnswers);
+    if(index == 1) {
+        question2();
+    } else if(index == 2) {
+        question3();
+    } else if(index == 3) {
+        question4();
+    } else if(index == 4) {
+        question5();
+    } else if(index == 5) {
+        questionEl.textContent = "";
+        renderScore();
+        // following three lines mostly just for me to make sure it's working properly during development
+    } else {
+        alert("something went wrong");
+        return;
+    }
+}
+
+function renderScore() {}
     // answers need to be either buttons or multiple choice input fields(?) that can be clicked on
     // make sure correct and incorrect responses are able to be logged separately (prevent event bubbling? Input field?)
     // when answer is given, move on to next question
