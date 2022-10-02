@@ -4,11 +4,11 @@ var answerEl = document.querySelector("#answers");
 var timerEl = document.querySelector("#timer");
 var outputEl = document.querySelector("#quiz");
 
-startButtonEl.addEventListener("click", startGame)
+startButtonEl.addEventListener("click", startTimer)
 
 var countdown = 30;
 
-function startGame(event) {
+function startTimer(event) {
     // startButtonEl.disabled = true; need to reenable when game is over if I want to include this
     var timerInterval = setInterval(function () {
         timerEl.textContent = countdown;
@@ -22,7 +22,7 @@ function startGame(event) {
         }
     } ,1000);
 
-    codeQuiz();
+    question1();
 }
 
 // obviously not done--gonna wait until I have the rest of it more built out before finishing
@@ -33,8 +33,59 @@ function trackHighScores() {
     list.textContent = highScores[0];
 }
 
-function codeQuiz() {
+function question1() {
     // use .textContent or .innerHTML to display question and answers
+    questionEl.textContent = "Which of the following is not one of the three core coding languages?";
+    var list1 = document.createElement("li");
+    // list1.textContent = "this is the first answer";
+    answerEl.appendChild(list1);
+    var answer1 = document.createElement("button");
+    answer1.textContent = "CSS";
+    // add button id for styling?
+    list1.appendChild(answer1);
+    answer1.addEventListener("click", checkAnswer);
+
+    var list2 = document.createElement("li");
+    answerEl.appendChild(list2);
+    var answer2 = document.createElement("button");
+    answer2.textContent = "Git";
+    answer2.setAttribute("id", "correct");
+    // add button id for styling?
+    list2.appendChild(answer2);
+    answer2.addEventListener("click", checkAnswer);
+
+    var list3 = document.createElement("li");
+    answerEl.appendChild(list3);
+    var answer3 = document.createElement("button");
+    answer3.textContent = "HTML";
+    // add button id for styling?
+    list3.appendChild(answer3);
+    answer3.addEventListener("click", checkAnswer);
+
+    var list4 = document.createElement("li");
+    answerEl.appendChild(list4);
+    var answer4 = document.createElement("button");
+    answer4.textContent = "JavaScript";
+    // add button id for styling?
+    list4.appendChild(answer4);
+    answer4.addEventListener("click", checkAnswer);
+
+
+}
+var rightAnswers = 0;
+var wrongAnswers = 0;
+function checkAnswer(event) {
+    var userAnswer = event.target;
+    if (userAnswer.matches("#correct")) {
+        rightAnswers++;
+    }
+    else {
+        wrongAnswers++;
+        countdown = countdown-5;
+    }
+    console.log(rightAnswers);
+    console.log(wrongAnswers);
+}
     // answers need to be either buttons or multiple choice input fields(?) that can be clicked on
     // make sure correct and incorrect responses are able to be logged separately (prevent event bubbling? Input field?)
     // when answer is given, move on to next question
@@ -43,5 +94,3 @@ function codeQuiz() {
     // display high score list w/ updated score if relevant
     // store high scores in local storage
     // reenable button to restart game
-
-}

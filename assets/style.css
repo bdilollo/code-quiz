@@ -19,7 +19,7 @@ h1 {
     font-size: 4rem;
     font-family: monospace;
 }
-button {
+#start {
     background-color: #93ac93;
     color: var(--background);
     font-size: 2rem;
