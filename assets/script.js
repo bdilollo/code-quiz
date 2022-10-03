@@ -6,32 +6,35 @@ var outputEl = document.querySelector("#quiz");
 
 startButtonEl.addEventListener("click", startTimer)
 
-var countdown = 30;
+var countdown = 10;
+var timerInterval;
+var rightAnswers = 0;
+var wrongAnswers = 0;
+var index;
 
 function startTimer(event) {
-    // startButtonEl.disabled = true; need to reenable when game is over if I want to include this
+    startButtonEl.disabled = true;
+    removeChildren();
     var timerInterval = setInterval(function () {
         timerEl.textContent = countdown;
         countdown--;
-        if(countdown === 0) {
+        // used < 0 instead of == 0 to avoid wrong answer penalty (-5 seconds) skipping 0 and continuing into negative values
+        // also, < 1 seemed to skip displaying 1 on the timer and go straight from 2 to "time's up"--not sure why?
+        if(countdown < 0) {
             clearInterval(timerInterval);
             timerEl.textContent = "Time's up!";
             countdown = 30;
-            // need to set up something that logs current score when timer hits 0--here or separate function?
-            // think maybe create separate function to log score and call both if timer hits 0 or if all quesitons answered
             renderScore();
+        }
+        if(index == 5) {
+            clearInterval(timerInterval);
+            timerEl.textContent = "";
+            countdown = 30;
+            return;
         }
     } ,1000);
 
     question1();
-}
-
-// obviously not done--gonna wait until I have the rest of it more built out before finishing
-function trackHighScores() {
-    var highScores = JSON.parse(localStorage.getItem("highScores"));
-    questionEl.textContent = "High Scores";
-    var list = document.createElement("li");
-    list.textContent = highScores[0];
 }
 
 function question1() {
@@ -73,6 +76,7 @@ function question1() {
 
 
 }
+
 function question2() {
     // use .textContent or .innerHTML to display question and answers
     questionEl.textContent = "Which of the following is an example of a non-semantic HTML tag?";
@@ -109,9 +113,8 @@ function question2() {
     // add button id for styling?
     list4.appendChild(answer4);
     answer4.addEventListener("click", checkAnswer);
-
-
 }
+
 function question3() {
     // use .textContent or .innerHTML to display question and answers
     questionEl.innerHTML = "Which of the following CSS selectors would apply to an HTML element with a <strong>class</strong> of 'card'?";
@@ -148,9 +151,8 @@ function question3() {
     // add button id for styling?
     list4.appendChild(answer4);
     answer4.addEventListener("click", checkAnswer);
-
-
 }
+
 function question4() {
     // use .textContent or .innerHTML to display question and answers
     questionEl.textContent = "_______ is a valid type of value in JavaScript.";
@@ -187,9 +189,8 @@ function question4() {
     // add button id for styling?
     list4.appendChild(answer4);
     answer4.addEventListener("click", checkAnswer);
-
-
 }
+
 function question5() {
     // use .textContent or .innerHTML to display question and answers
     questionEl.textContent = "When using JavaScript, what does the expression 'i++' represent?";
@@ -226,11 +227,8 @@ function question5() {
     // add button id for styling?
     list4.appendChild(answer4);
     answer4.addEventListener("click", checkAnswer);
-
-
 }
-var rightAnswers = 0;
-var wrongAnswers = 0;
+
 function checkAnswer(event) {
     var userAnswer = event.target;
     if (userAnswer.matches("#correct")) {
@@ -243,14 +241,16 @@ function checkAnswer(event) {
    removeChildren();
    nextQuestion();
 }
+
 function removeChildren() {
+    questionEl.textContent = "";
     while (answerEl.firstChild) {
         answerEl.removeChild(answerEl.firstChild);
     }
 }
 
 function nextQuestion() {
-    var index = (rightAnswers + wrongAnswers);
+    index = (rightAnswers + wrongAnswers);
     if(index == 1) {
         question2();
     } else if(index == 2) {
@@ -261,6 +261,8 @@ function nextQuestion() {
         question5();
     } else if(index == 5) {
         questionEl.textContent = "";
+        console.log(index);
+
         renderScore();
         // following three lines mostly just for me to make sure it's working properly during development
     } else {
@@ -269,12 +271,28 @@ function nextQuestion() {
     }
 }
 
-function renderScore() {}
-    // answers need to be either buttons or multiple choice input fields(?) that can be clicked on
-    // make sure correct and incorrect responses are able to be logged separately (prevent event bubbling? Input field?)
-    // when answer is given, move on to next question
-    // when all questions have been answered, stop timer and display score
+function renderScore() {
+    startButtonEl.disabled = false;
+    startTimer();
+    removeChildren();
+    timerEl.textContent = "";
+    alert(`Great job! Here's your score: ${rightAnswers}`)
+}
+
+// obviously not done--gonna wait until I have the rest of it more built out before finishing
+function trackHighScores() {
+    var highScores = JSON.parse(localStorage.getItem("highScores"));
+    questionEl.textContent = "High Scores";
+    var list = document.createElement("li");
+    list.textContent = highScores[0];
+}
+
+// create empty array to store high scores (var highScores)
+// parse localStorage to check for stored high scores and assign array to var highScores
+// if highScores.length is less than 5, add rightAnswers to highScores
+// sort array in descending order using .sort and compare function
+// create list item for each value, display each one according to order in array
+
     // determine if score qualifies for high score list (iterate through high score list?) and place it appropriately if it does
     // display high score list w/ updated score if relevant
     // store high scores in local storage
-    // reenable button to restart game
