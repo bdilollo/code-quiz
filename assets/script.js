@@ -6,7 +6,7 @@ var outputEl = document.querySelector("#quiz");
 
 startButtonEl.addEventListener("click", startTimer)
 
-var countdown = 10;
+var countdown;
 var timerInterval;
 var rightAnswers = 0;
 var wrongAnswers = 0;
@@ -15,7 +15,8 @@ var index;
 function startTimer(event) {
     startButtonEl.disabled = true;
     removeChildren();
-    var timerInterval = setInterval(function () {
+    countdown = 30;
+    timerInterval = setInterval(function () {
         timerEl.textContent = countdown;
         countdown--;
         // used < 0 instead of == 0 to avoid wrong answer penalty (-5 seconds) skipping 0 and continuing into negative values
@@ -25,12 +26,6 @@ function startTimer(event) {
             timerEl.textContent = "Time's up!";
             countdown = 30;
             renderScore();
-        }
-        if(index == 5) {
-            clearInterval(timerInterval);
-            timerEl.textContent = "";
-            countdown = 30;
-            return;
         }
     } ,1000);
 
@@ -261,8 +256,6 @@ function nextQuestion() {
         question5();
     } else if(index == 5) {
         questionEl.textContent = "";
-        console.log(index);
-
         renderScore();
         // following three lines mostly just for me to make sure it's working properly during development
     } else {
@@ -272,27 +265,51 @@ function nextQuestion() {
 }
 
 function renderScore() {
-    startButtonEl.disabled = false;
-    startTimer();
+    clearInterval(timerInterval);
     removeChildren();
     timerEl.textContent = "";
-    alert(`Great job! Here's your score: ${rightAnswers}`)
+    alert(`Great job! Here's your score: ${rightAnswers}`);
+    renderHighScores();
 }
 
-// obviously not done--gonna wait until I have the rest of it more built out before finishing
-function trackHighScores() {
+function renderHighScores() {
+    // form to ask for initials -> store as variable userInitials
+    var userInitials = prompt("Save your high score! Please enter your initials:");
+
+    if(userInitials.length !== 2) {
+        alert("Please enter 2 characters for your initials.");
+        renderHighScores();
+    }
+    // variable userScore = `${rightAnswers} - ${userInitials}`
+    var userScore = `${rightAnswers} - ${userInitials}`;
+    // create empty array to store high scores (var highScores)
+    // parse localStorage to check for stored high scores and assign array to var highScores
     var highScores = JSON.parse(localStorage.getItem("highScores"));
-    questionEl.textContent = "High Scores";
-    var list = document.createElement("li");
-    list.textContent = highScores[0];
+    if(!highScores) {
+        highScores = [];
+    }
+
+    // add userScore to highScores
+    highScores.splice(1, 0, userScore);
+    // sort array in descending order using .sort and compare function
+    highScores = highScores.sort(function(a,b){return parseInt(b) - parseInt(a)});
+    // if highScores.length > 5, splice last value
+    if (highScores.length > 5) {
+        highScores.pop();
+    }
+
+// // create list item for each value, display each one according to order in array    timerEl.textContent = "High Scores:"
+    for(var i=0; i<highScores.length; i++) {
+        var ol = document.createElement("ol");
+        timerEl.appendChild(ol);
+        var highScoreList = document.createElement("li");
+        // highScoresEl.appendChild(highScoreList);
+        highScoreList.textContent = highScores[i];
+        ol.appendChild(highScoreList);
+    }
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    rightAnswers = 0;
+    wrongAnswers = 0;
+    index = 0;
+    startButtonEl.disabled = false;
 }
-
-// create empty array to store high scores (var highScores)
-// parse localStorage to check for stored high scores and assign array to var highScores
-// if highScores.length is less than 5, add rightAnswers to highScores
-// sort array in descending order using .sort and compare function
-// create list item for each value, display each one according to order in array
-
-    // determine if score qualifies for high score list (iterate through high score list?) and place it appropriately if it does
-    // display high score list w/ updated score if relevant
-    // store high scores in local storage
