@@ -279,7 +279,7 @@ function renderHighScores() {
             userInitials = "";
         alert("Please enter 2 characters for your initials.");
         renderHighScores();
-    } else if(userInitials = null) {
+    } else if(userInitials == null) {
         index = 0;
         rightAnswers = 0;
         wrongAnswers = 0;
