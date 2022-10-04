@@ -15,7 +15,7 @@ var index;
 function startTimer(event) {
     startButtonEl.disabled = true;
     removeChildren();
-    countdown = 30;
+    countdown = 60;
     timerInterval = setInterval(function () {
         timerEl.textContent = countdown;
         countdown--;
@@ -24,7 +24,7 @@ function startTimer(event) {
         if(countdown < 0) {
             clearInterval(timerInterval);
             timerEl.textContent = "Time's up!";
-            countdown = 30;
+            countdown = 60;
             renderScore();
         }
     } ,1000);
