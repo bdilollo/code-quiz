@@ -39,7 +39,7 @@ function question1() {
     // list1.textContent = "this is the first answer";
     answerEl.appendChild(list1);
     var answer1 = document.createElement("button");
-    answer1.textContent = "CSS";
+    answer1.textContent = "a. CSS";
     // add button id for styling?
     list1.appendChild(answer1);
     answer1.addEventListener("click", checkAnswer);
@@ -47,7 +47,7 @@ function question1() {
     var list2 = document.createElement("li");
     answerEl.appendChild(list2);
     var answer2 = document.createElement("button");
-    answer2.textContent = "Git";
+    answer2.textContent = "b. Git";
     answer2.setAttribute("id", "correct");
     // add button id for styling?
     list2.appendChild(answer2);
@@ -56,7 +56,7 @@ function question1() {
     var list3 = document.createElement("li");
     answerEl.appendChild(list3);
     var answer3 = document.createElement("button");
-    answer3.textContent = "HTML";
+    answer3.textContent = "c. HTML";
     // add button id for styling?
     list3.appendChild(answer3);
     answer3.addEventListener("click", checkAnswer);
@@ -64,7 +64,7 @@ function question1() {
     var list4 = document.createElement("li");
     answerEl.appendChild(list4);
     var answer4 = document.createElement("button");
-    answer4.textContent = "JavaScript";
+    answer4.textContent = "d. JavaScript";
     // add button id for styling?
     list4.appendChild(answer4);
     answer4.addEventListener("click", checkAnswer);
@@ -79,7 +79,7 @@ function question2() {
     // list1.textContent = "this is the first answer";
     answerEl.appendChild(list1);
     var answer1 = document.createElement("button");
-    answer1.textContent = "<main>";
+    answer1.textContent = "a. <main>";
     // add button id for styling?
     list1.appendChild(answer1);
     answer1.addEventListener("click", checkAnswer);
@@ -87,7 +87,7 @@ function question2() {
     var list2 = document.createElement("li");
     answerEl.appendChild(list2);
     var answer2 = document.createElement("button");
-    answer2.textContent = "<header>";
+    answer2.textContent = "b. <header>";
     // add button id for styling?
     list2.appendChild(answer2);
     answer2.addEventListener("click", checkAnswer);
@@ -95,7 +95,7 @@ function question2() {
     var list3 = document.createElement("li");
     answerEl.appendChild(list3);
     var answer3 = document.createElement("button");
-    answer3.textContent = "<aside>";
+    answer3.textContent = "c. <aside>";
     // add button id for styling?
     list3.appendChild(answer3);
     answer3.addEventListener("click", checkAnswer);
@@ -103,7 +103,7 @@ function question2() {
     var list4 = document.createElement("li");
     answerEl.appendChild(list4);
     var answer4 = document.createElement("button");
-    answer4.textContent = "<div>";
+    answer4.textContent = "d. <div>";
     answer4.setAttribute("id","correct");
     // add button id for styling?
     list4.appendChild(answer4);
@@ -117,7 +117,7 @@ function question3() {
     // list1.textContent = "this is the first answer";
     answerEl.appendChild(list1);
     var answer1 = document.createElement("button");
-    answer1.textContent = "card {";
+    answer1.textContent = "a. card {";
     // add button id for styling?
     list1.appendChild(answer1);
     answer1.addEventListener("click", checkAnswer);
@@ -125,7 +125,7 @@ function question3() {
     var list2 = document.createElement("li");
     answerEl.appendChild(list2);
     var answer2 = document.createElement("button");
-    answer2.textContent = "#card {";
+    answer2.textContent = "b. #card {";
     // add button id for styling?
     list2.appendChild(answer2);
     answer2.addEventListener("click", checkAnswer);
@@ -133,7 +133,7 @@ function question3() {
     var list3 = document.createElement("li");
     answerEl.appendChild(list3);
     var answer3 = document.createElement("button");
-    answer3.textContent = ".card {";
+    answer3.textContent = "c. .card {";
     answer3.setAttribute("id", "correct");
     // add button id for styling?
     list3.appendChild(answer3);
@@ -142,7 +142,7 @@ function question3() {
     var list4 = document.createElement("li");
     answerEl.appendChild(list4);
     var answer4 = document.createElement("button");
-    answer4.textContent = "*card {";
+    answer4.textContent = "d. *card {";
     // add button id for styling?
     list4.appendChild(answer4);
     answer4.addEventListener("click", checkAnswer);
@@ -155,7 +155,7 @@ function question4() {
     // list1.textContent = "this is the first answer";
     answerEl.appendChild(list1);
     var answer1 = document.createElement("button");
-    answer1.textContent = "boolean";
+    answer1.textContent = "a. boolean";
     // add button id for styling?
     list1.appendChild(answer1);
     answer1.addEventListener("click", checkAnswer);
@@ -163,7 +163,7 @@ function question4() {
     var list2 = document.createElement("li");
     answerEl.appendChild(list2);
     var answer2 = document.createElement("button");
-    answer2.textContent = "string";
+    answer2.textContent = "b. string";
     // add button id for styling?
     list2.appendChild(answer2);
     answer2.addEventListener("click", checkAnswer);
@@ -171,7 +171,7 @@ function question4() {
     var list3 = document.createElement("li");
     answerEl.appendChild(list3);
     var answer3 = document.createElement("button");
-    answer3.textContent = "number";
+    answer3.textContent = "c. number";
     // add button id for styling?
     list3.appendChild(answer3);
     answer3.addEventListener("click", checkAnswer);
@@ -179,7 +179,7 @@ function question4() {
     var list4 = document.createElement("li");
     answerEl.appendChild(list4);
     var answer4 = document.createElement("button");
-    answer4.textContent = "all of the above";
+    answer4.textContent = "d. all of the above";
     answer4.setAttribute("id", "correct");
     // add button id for styling?
     list4.appendChild(answer4);
@@ -193,7 +193,7 @@ function question5() {
     // list1.textContent = "this is the first answer";
     answerEl.appendChild(list1);
     var answer1 = document.createElement("button");
-    answer1.textContent = "i=i+1";
+    answer1.textContent = "a. i=i+1";
     answer1.setAttribute("id", "correct");
     // add button id for styling?
     list1.appendChild(answer1);
@@ -202,7 +202,7 @@ function question5() {
     var list2 = document.createElement("li");
     answerEl.appendChild(list2);
     var answer2 = document.createElement("button");
-    answer2.textContent = "i=i+i";
+    answer2.textContent = "b. i=i+i";
     // add button id for styling?
     list2.appendChild(answer2);
     answer2.addEventListener("click", checkAnswer);
@@ -210,7 +210,7 @@ function question5() {
     var list3 = document.createElement("li");
     answerEl.appendChild(list3);
     var answer3 = document.createElement("button");
-    answer3.textContent = "i=i+2";
+    answer3.textContent = "c. i=i+2";
     // add button id for styling?
     list3.appendChild(answer3);
     answer3.addEventListener("click", checkAnswer);
@@ -218,7 +218,7 @@ function question5() {
     var list4 = document.createElement("li");
     answerEl.appendChild(list4);
     var answer4 = document.createElement("button");
-    answer4.textContent = "i=|i|";
+    answer4.textContent = "d. i=|i|";
     // add button id for styling?
     list4.appendChild(answer4);
     answer4.addEventListener("click", checkAnswer);
@@ -280,6 +280,7 @@ function renderHighScores() {
         alert("Please enter 2 characters for your initials.");
         renderHighScores();
     }
+    
     // variable userScore = `${rightAnswers} - ${userInitials}`
     var userScore = `${rightAnswers} - ${userInitials}`;
     // create empty array to store high scores (var highScores)
@@ -298,15 +299,17 @@ function renderHighScores() {
         highScores.pop();
     }
 
-// // create list item for each value, display each one according to order in array    timerEl.textContent = "High Scores:"
+// // create list item for each value, display each one according to order in array    
+    timerEl.textContent = "High Scores:"
+    var ol = document.createElement("ol");
     for(var i=0; i<highScores.length; i++) {
-        var ol = document.createElement("ol");
-        timerEl.appendChild(ol);
         var highScoreList = document.createElement("li");
         // highScoresEl.appendChild(highScoreList);
         highScoreList.textContent = highScores[i];
         ol.appendChild(highScoreList);
     }
+    timerEl.appendChild(ol);
+
     localStorage.setItem("highScores", JSON.stringify(highScores));
     rightAnswers = 0;
     wrongAnswers = 0;

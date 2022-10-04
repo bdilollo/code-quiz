@@ -2,14 +2,15 @@
     box-sizing: border-box;
 }
 :root {
-    --background: #ffebcd;
+    --primary: #556b2f;
+    --secondary: #ffebcd;
 }
 body{
-    background-color: var(--background);
+    background-color: var(--secondary);
 }
 header {
-    background-color: #556b2f;
-    color: var(--background);
+    background-color: var(--primary);
+    color: var(--secondary);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +22,7 @@ h1 {
 }
 #start {
     background-color: #93ac93;
-    color: var(--background);
+    color: var(--secondary);
     font-size: 2rem;
     padding: 5px;
     padding-left: 10px;
@@ -29,7 +30,7 @@ h1 {
     position: absolute;
     top: 142px;
     border-radius: 15px;
-    border-color: var(--background);
+    border-color: var(--secondary);
     border-style: solid;
 }
 
@@ -40,4 +41,37 @@ h1 {
     margin-left: 25px;
     margin-right: 25px;
     border-radius: 10px;
+    font-size: 20px;
+    /* border: solid 2px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#question {
+    font-weight: bold;
+    color: #3c4b21;
+}
+#answers button {
+    background-color: var(--primary);
+    color: var(--secondary);
+    border-radius: 10px;
+    padding: 5px;
+    margin: 2px;
+    width: 30%;
+    text-align: left;
+}
+
+#quiz ol {
+    list-style-type: none;
+}
+#timer {
+    text-align: end;
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+#timer ol {
+    list-style-position: inside;
+    text-align: end;
 }
