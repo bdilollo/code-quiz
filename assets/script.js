@@ -275,12 +275,17 @@ function renderScore() {
 function renderHighScores() {
     // form to ask for initials -> store as variable userInitials
     var userInitials = prompt("Save your high score! Please enter your initials:");
-
-    if(userInitials.length !== 2) {
+    if(userInitials !== null && userInitials.length !== 2) {
+            userInitials = "";
         alert("Please enter 2 characters for your initials.");
         renderHighScores();
+    } else {
+        index = 0;
+        rightAnswers = 0;
+        wrongAnswers = 0;
+        startButtonEl.disabled = false;
+        return;
     }
-    
     // variable userScore = `${rightAnswers} - ${userInitials}`
     var userScore = `${rightAnswers} - ${userInitials}`;
     // create empty array to store high scores (var highScores)
